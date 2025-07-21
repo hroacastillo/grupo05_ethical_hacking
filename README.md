@@ -294,3 +294,7 @@ Este caso muestra el comportamiento esperado del componente cuando no se introdu
 **Responsable**: Grupo 05
 **Institución**: UPC - Universidad Peruana de Ciencias Aplicadas  
 **Curso**: Ethical Hacking
+
+---
+
+Prueba de concepto adaptado de: https://github.com/neverendingsupport/nes-vuetify-cve-2025-1461.git
