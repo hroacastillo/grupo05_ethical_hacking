@@ -27,8 +27,8 @@ La vulnerabilidad se encuentra en el componente `v-calendar` de Vuetify, especí
 
 #### Paso 1: Clonar el Repositorio
 ```bash
-git clone https://github.com/neverendingsupport/nes-vuetify-cve-2025-1461.git
-cd nes-vuetify-cve-2025-1461
+git clone https://github.com/hroacastillo/grupo05_ethical_hacking.git
+cd grupo05_ethical_hacking
 ```
 
 #### Paso 2: Verificar Dependencias Vulnerables
